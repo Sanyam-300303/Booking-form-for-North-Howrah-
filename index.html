@@ -67,4 +67,107 @@
       padding: 20px;
       border-radius: 10px;
       width: 80%;
-      max-width: 60
+      max-width: 600px;
+      text-align: center;
+      z-index: 1;
+    }
+    h2 {
+      color: #333;
+    }
+    input[type="text"] {
+      padding: 8px;
+      font-size: 16px;
+      width: 80%;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #errorMsg {
+      color: red;
+      margin-top: 10px;
+    }
+    .terms {
+      font-size: 14px;
+      color: #555;
+      margin-top: 15px;
+      text-align: left;
+    }
+    .terms input[type="checkbox"] {
+      margin-right: 10px;
+    }
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="greeting">
+    स्नेह प्रयास परिवार आपका हार्दिक स्वागत करता है 🙏
+  </div>
+
+  <div class="committee">
+    For North Howrah Yatri 
+  </div>
+
+  <div class="container">
+    <h2>Enter Booking ID to Access the Form</h2>
+    <input type="text" id="bookingId" placeholder="Enter Booking ID (e.g., nhwh01)" />
+    <button onclick="checkBookingId()">Submit</button>
+
+    <p id="errorMsg"></p>
+
+    <div id="formContainer" style="display:none;">
+      <h3>Booking Form</h3>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd8WKu_WQu9-K-XA0VZ9peP3vyuCocSA7mfHTlXqpWX-X0XIA/viewform?embedded=true">
+        Loading…
+      </iframe>
+
+      <div class="terms">
+        <input type="checkbox" id="termsCheckbox" required />
+        <label for="termsCheckbox">
+          We hereby confirm that all the information provided is accurate and complete to the best of our knowledge. We acknowledge that we have read, understood, and agree to abide by the terms and conditions set forth by the Sneh Prayas Yatra Committee. Furthermore, we understand that the Committee reserves the right to reject our application without providing any reason, and may modify the itinerary, route, or destinations at any time prior to the trip.
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const validBookingIds = [];
+    for(let i=1; i<=21; i++) {
+      validBookingIds.push("nhwh" + (i < 10 ? "0" + i : i));
+    }
+
+    function checkBookingId() {
+      const enteredId = document.getElementById("bookingId").value.trim().toLowerCase();
+      const errorMsg = document.getElementById("errorMsg");
+      const formContainer = document.getElementById("formContainer");
+      const termsCheckbox = document.getElementById("termsCheckbox");
+
+      if(validBookingIds.includes(enteredId)) {
+        formContainer.style.display = "block";
+        errorMsg.innerText = "";
+        termsCheckbox.checked = false; // reset checkbox each time
+      } else {
+        formContainer.style.display = "none";
+        errorMsg.innerText = "❌ Invalid Booking ID. Please try again.";
+      }
+    }
+  </script>
+</body>
+</html>
