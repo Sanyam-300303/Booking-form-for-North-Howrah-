@@ -34,24 +34,6 @@
       font-family: 'Arial', sans-serif;
       padding: 10px 0;
     }
-    .committee {
-      position: absolute;
-      top: 90px;
-      width: 100%;
-      font-size: 30px;
-      font-weight: bold;
-      color: #ffffff;
-      background: linear-gradient(45deg, #ff80ab, #ff4081);
-      -webkit-background-clip: text;
-      background-clip: text;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.3), 0 0 10px rgba(255,64,129,0.6);
-      z-index: 10;
-      font-family: 'Arial', sans-serif;
-      padding: 5px 0;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      animation: fadeIn 3s ease-out;
-    }
     @keyframes fadeIn {
       0% {
         opacity: 0;
@@ -113,16 +95,19 @@
       border: none;
       margin-top: 20px;
     }
+    .group-label {
+      margin-top: 40px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #222;
+      font-family: 'Arial', sans-serif;
+    }
   </style>
 </head>
 <body>
 
   <div class="greeting">
     स्नेह प्रयास परिवार आपका हार्दिक स्वागत करता है 🙏
-  </div>
-
-  <div class="committee">
-    For North Howrah Yatri 
   </div>
 
   <div class="container">
@@ -145,6 +130,10 @@
         </label>
       </div>
     </div>
+
+    <div class="group-label">
+      North Howrah Group
+    </div>
   </div>
 
   <script>
@@ -162,7 +151,7 @@
       if(validBookingIds.includes(enteredId)) {
         formContainer.style.display = "block";
         errorMsg.innerText = "";
-        termsCheckbox.checked = false; // reset checkbox each time
+        termsCheckbox.checked = false;
       } else {
         formContainer.style.display = "none";
         errorMsg.innerText = "❌ Invalid Booking ID. Please try again.";
