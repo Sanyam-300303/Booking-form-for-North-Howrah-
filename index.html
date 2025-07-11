@@ -10,11 +10,20 @@
       margin: 0;
       padding: 0;
       font-family: 'Baloo 2', cursive, 'Roboto', sans-serif;
-      background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)),
-        url('https://www.kailash-yatra.org/images/ashtpad.jpg') no-repeat center center fixed;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/1/13/Adinath_Temple_Kundalpur_Bihar.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #3e2723;
       text-align: center;
+    }
+
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.88);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding-bottom: 50px;
     }
 
     header {
@@ -37,7 +46,6 @@
       border-radius: 16px;
       width: 90%;
       max-width: 600px;
-      margin: 0 auto 50px;
       box-shadow: 0 4px 15px rgba(163, 81, 45, 0.25);
     }
 
@@ -115,26 +123,27 @@
   </style>
 </head>
 <body>
+  <div class="overlay">
+    <header>अष्टापद तीर्थ यात्रा 2025</header>
+    <div class="greeting">आयोजक: <strong>स्नेह प्रयास</strong><br>आपका पावन स्वागत है 🙏</div>
 
-  <header>अष्टापद तीर्थ यात्रा 2025</header>
-  <div class="greeting">आयोजक: <strong>स्नेह प्रयास</strong><br>आपका पावन स्वागत है 🙏</div>
+    <div class="container">
+      <h2>बुकिंग ID दर्ज करें</h2>
+      <input type="text" id="bookingId" placeholder="उदाहरण: ind153" />
+      <br />
+      <button onclick="checkBookingId()">प्रवेश करें</button>
+      <p id="errorMsg"></p>
 
-  <div class="container">
-    <h2>बुकिंग ID दर्ज करें</h2>
-    <input type="text" id="bookingId" placeholder="उदाहरण: ind153" />
-    <br />
-    <button onclick="checkBookingId()">प्रवेश करें</button>
-    <p id="errorMsg"></p>
+      <div id="formContainer" style="display:none;">
+        <h3>पंजीकरण फ़ॉर्म</h3>
+        <iframe src="" loading="lazy">Loading…</iframe>
 
-    <div id="formContainer" style="display:none;">
-      <h3>पंजीकरण फ़ॉर्म</h3>
-      <iframe src="" loading="lazy">Loading…</iframe>
-
-      <div class="terms">
-        <input type="checkbox" id="termsCheckbox" required />
-        <label for="termsCheckbox">
-          हम प्रमाणित करते हैं कि दी गई सभी जानकारी सही और सत्य है।
-        </label>
+        <div class="terms">
+          <input type="checkbox" id="termsCheckbox" required />
+          <label for="termsCheckbox">
+            हम प्रमाणित करते हैं कि दी गई सभी जानकारी सही और सत्य है।
+          </label>
+        </div>
       </div>
     </div>
   </div>
@@ -172,12 +181,15 @@
         errorMsg.innerText = "";
         formContainer.style.display = "block";
 
-        // Prefill form with booking ID
+        // Prefill Google Form with booking ID
         const entryId = "entry.1689621018";
         const baseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeIP3xr1UbQwwa42Fk8kqS-zB1Ujx9rhDK5QU3B4ldyuD9EKQ/viewform";
         const prefillUrl = `${baseUrl}?usp=pp_url&${entryId}=${encodeURIComponent(enteredId)}`;
 
         iframe.src = prefillUrl;
+
+        // Disable input so it can't be changed after
+        document.getElementById("bookingId").readOnly = true;
       }
     }
   </script>
