@@ -3,191 +3,181 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Booking Access - North Howrah Group</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap" rel="stylesheet" />
-
+  <title>अष्टापद तीर्थ यात्रा - स्नेह प्रयास</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Roboto&display=swap" rel="stylesheet" />
   <style>
-    /* Background */
     body {
-      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      height: 100vh;
-      background-image: url('https://www.kailash-yatra.org/images/ashtpad.jpg');
+      font-family: 'Baloo 2', cursive, 'Roboto', sans-serif;
+      background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)),
+        url('https://www.kailash-yatra.org/images/ashtpad.jpg') no-repeat center center fixed;
       background-size: cover;
-      background-position: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      color: #3e2723;
       text-align: center;
-      flex-direction: column;
-      position: relative;
-      color: #333;
     }
 
-    /* Greeting */
+    header {
+      font-size: 42px;
+      color: #a52a2a;
+      margin: 30px 10px 10px;
+      text-shadow: 1px 1px #fff0e0;
+    }
+
     .greeting {
-      position: absolute;
-      top: 20px;
-      width: 100%;
-      font-size: 48px;
-      font-weight: 900;
-      background: linear-gradient(90deg, #ff4d6d, #ff7f50, #ffa500);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
-      letter-spacing: 3px;
-      animation: bounce 2.5s infinite ease-in-out;
-      z-index: 10;
+      font-size: 22px;
+      font-weight: 600;
+      color: #5d4037;
+      margin-bottom: 20px;
     }
 
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-
-    /* Container */
     .container {
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 20px 30px;
-      border-radius: 12px;
-      width: 85%;
+      background-color: rgba(255, 250, 245, 0.96);
+      padding: 25px 30px;
+      border-radius: 16px;
+      width: 90%;
       max-width: 600px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      margin-top: 100px;
-      z-index: 2;
+      margin: 0 auto 50px;
+      box-shadow: 0 4px 15px rgba(163, 81, 45, 0.25);
     }
 
     h2 {
-      color: #333;
+      color: #6a1b9a;
+      margin-bottom: 15px;
     }
 
     input[type="text"] {
       padding: 10px;
-      font-size: 16px;
+      font-size: 18px;
       width: 80%;
-      margin: 12px 0;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+      border-radius: 8px;
+      border: 1px solid #ba68c8;
+      margin-top: 12px;
+      outline-color: #8e24aa;
     }
 
     button {
+      margin-top: 15px;
       padding: 10px 24px;
       font-size: 16px;
-      background-color: #007bff;
+      background-color: #8e24aa;
       color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
     button:hover {
-      background-color: #0056b3;
+      background-color: #6a1b9a;
     }
 
     #errorMsg {
-      color: red;
+      color: #c62828;
       margin-top: 10px;
-      min-height: 24px;
-      font-weight: bold;
-    }
-
-    .terms {
-      font-size: 14px;
-      color: #444;
-      margin-top: 15px;
-      text-align: left;
-      max-width: 560px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .terms input[type="checkbox"] {
-      margin-right: 10px;
+      font-weight: 600;
     }
 
     iframe {
       width: 100%;
       height: 600px;
       border: none;
-      margin-top: 15px;
+      margin-top: 20px;
       border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(90, 35, 70, 0.15);
     }
 
-    /* North Howrah Group (footer text, less shiny classy style) */
-    .north-howrah {
-      margin-top: 30px;
-      font-size: 32px;
-      font-weight: 700;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #405060, #506070, #607080);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
-      letter-spacing: 3px;
-      text-transform: uppercase;
+    .terms {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #5d4037;
+      text-align: left;
+    }
+
+    .terms input {
+      margin-right: 8px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        font-size: 28px;
+      }
+      .greeting {
+        font-size: 18px;
+      }
+      .container {
+        padding: 20px;
+      }
+      iframe {
+        height: 400px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Greeting -->
-  <div class="greeting">
-    स्नेह प्रयास परिवार आपका हार्दिक स्वागत करता है 🙏
-  </div>
+  <header>अष्टापद तीर्थ यात्रा 2025</header>
+  <div class="greeting">आयोजक: <strong>स्नेह प्रयास</strong><br>आपका पावन स्वागत है 🙏</div>
 
-  <!-- Booking Access Box -->
   <div class="container">
-    <h2>Enter Booking ID to Access the Form</h2>
-    <input type="text" id="bookingId" placeholder="Enter Booking ID (e.g., nhwh01)" />
-    <button onclick="checkBookingId()">Submit</button>
-
+    <h2>बुकिंग ID दर्ज करें</h2>
+    <input type="text" id="bookingId" placeholder="उदाहरण: ind153" />
+    <br />
+    <button onclick="checkBookingId()">प्रवेश करें</button>
     <p id="errorMsg"></p>
 
     <div id="formContainer" style="display:none;">
-      <h3>Booking Form</h3>
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd8WKu_WQu9-K-XA0VZ9peP3vyuCocSA7mfHTlXqpWX-X0XIA/viewform?embedded=true" loading="lazy">
-        Loading…
-      </iframe>
+      <h3>पंजीकरण फ़ॉर्म</h3>
+      <iframe src="" loading="lazy">Loading…</iframe>
 
       <div class="terms">
         <input type="checkbox" id="termsCheckbox" required />
         <label for="termsCheckbox">
-          We hereby confirm that all the information provided is accurate and complete to the best of our knowledge. We acknowledge that we have read, understood, and agree to abide by the terms and conditions set forth by the Sneh Prayas Yatra Committee. Furthermore, we understand that the Committee reserves the right to reject our application without providing any reason, and may modify the itinerary, route, or destinations at any time prior to the trip.
+          हम प्रमाणित करते हैं कि दी गई सभी जानकारी सही और सत्य है।
         </label>
       </div>
     </div>
   </div>
 
-  <!-- Footer Text -->
-  <div class="north-howrah">North Howrah Group</div>
-
-  <!-- Script -->
   <script>
     const validBookingIds = [];
-    for (let i = 1; i <= 21; i++) {
-      validBookingIds.push("nhwh" + (i < 10 ? "0" + i : i));
+
+    function addBookingRange(prefix, start, end) {
+      for (let i = start; i <= end; i++) {
+        validBookingIds.push(prefix.toLowerCase() + i);
+      }
     }
+
+    // Add valid booking ID ranges
+    addBookingRange('ind', 153, 196);
+    addBookingRange('shwh', 197, 288);
+    addBookingRange('nhwh', 289, 315);
+    addBookingRange('bbz', 316, 340);
+    addBookingRange('bbk', 341, 362);
+    addBookingRange('ali', 363, 371);
+    addBookingRange('kan', 372, 394);
+    addBookingRange('chow', 395, 412);
+    addBookingRange('shy', 413, 434);
 
     function checkBookingId() {
       const enteredId = document.getElementById("bookingId").value.trim().toLowerCase();
       const errorMsg = document.getElementById("errorMsg");
       const formContainer = document.getElementById("formContainer");
+      const iframe = formContainer.querySelector("iframe");
 
-      if (validBookingIds.includes(enteredId)) {
-        formContainer.style.display = "block";
-        errorMsg.innerText = "";
-      } else {
+      if (!validBookingIds.includes(enteredId)) {
+        errorMsg.innerText = "❌ अमान्य बुकिंग ID। कृपया पुनः प्रयास करें।";
         formContainer.style.display = "none";
-        errorMsg.innerText = "❌ Invalid Booking ID. Please try again.";
+      } else {
+        errorMsg.innerText = "";
+        formContainer.style.display = "block";
+
+        // Prefill form with booking ID
+        const entryId = "entry.1689621018";
+        const baseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeIP3xr1UbQwwa42Fk8kqS-zB1Ujx9rhDK5QU3B4ldyuD9EKQ/viewform";
+        const prefillUrl = `${baseUrl}?usp=pp_url&${entryId}=${encodeURIComponent(enteredId)}`;
+
+        iframe.src = prefillUrl;
       }
     }
   </script>
