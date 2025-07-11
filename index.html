@@ -16,16 +16,6 @@
       text-align: center;
     }
 
-    .overlay {
-      background-color: rgba(255, 255, 255, 0.88);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      padding-bottom: 50px;
-    }
-
     header {
       font-size: 42px;
       color: #a52a2a;
@@ -38,14 +28,16 @@
       font-weight: 600;
       color: #5d4037;
       margin-bottom: 20px;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.7);
     }
 
     .container {
-      background-color: rgba(255, 250, 245, 0.96);
+      background-color: rgba(255, 255, 255, 0.92);
       padding: 25px 30px;
       border-radius: 16px;
       width: 90%;
       max-width: 600px;
+      margin: 30px auto;
       box-shadow: 0 4px 15px rgba(163, 81, 45, 0.25);
     }
 
@@ -123,27 +115,26 @@
   </style>
 </head>
 <body>
-  <div class="overlay">
-    <header>अष्टापद तीर्थ यात्रा 2025</header>
-    <div class="greeting">आयोजक: <strong>स्नेह प्रयास</strong><br>आपका पावन स्वागत है 🙏</div>
 
-    <div class="container">
-      <h2>बुकिंग ID दर्ज करें</h2>
-      <input type="text" id="bookingId" placeholder="उदाहरण: ind153" />
-      <br />
-      <button onclick="checkBookingId()">प्रवेश करें</button>
-      <p id="errorMsg"></p>
+  <header>अष्टापद तीर्थ यात्रा 2025</header>
+  <div class="greeting">आयोजक: <strong>स्नेह प्रयास</strong><br>आपका पावन स्वागत है 🙏</div>
 
-      <div id="formContainer" style="display:none;">
-        <h3>पंजीकरण फ़ॉर्म</h3>
-        <iframe src="" loading="lazy">Loading…</iframe>
+  <div class="container">
+    <h2>बुकिंग ID दर्ज करें</h2>
+    <input type="text" id="bookingId" placeholder="उदाहरण: ind153" />
+    <br />
+    <button onclick="checkBookingId()">प्रवेश करें</button>
+    <p id="errorMsg"></p>
 
-        <div class="terms">
-          <input type="checkbox" id="termsCheckbox" required />
-          <label for="termsCheckbox">
-            हम प्रमाणित करते हैं कि दी गई सभी जानकारी सही और सत्य है।
-          </label>
-        </div>
+    <div id="formContainer" style="display:none;">
+      <h3>पंजीकरण फ़ॉर्म</h3>
+      <iframe src="" loading="lazy">Loading…</iframe>
+
+      <div class="terms">
+        <input type="checkbox" id="termsCheckbox" required />
+        <label for="termsCheckbox">
+          हम प्रमाणित करते हैं कि दी गई सभी जानकारी सही और सत्य है।
+        </label>
       </div>
     </div>
   </div>
@@ -157,7 +148,6 @@
       }
     }
 
-    // Add valid booking ID ranges
     addBookingRange('ind', 153, 196);
     addBookingRange('shwh', 197, 288);
     addBookingRange('nhwh', 289, 315);
@@ -181,14 +171,12 @@
         errorMsg.innerText = "";
         formContainer.style.display = "block";
 
-        // Prefill Google Form with booking ID
+        // Prefill Google Form
         const entryId = "entry.1689621018";
         const baseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeIP3xr1UbQwwa42Fk8kqS-zB1Ujx9rhDK5QU3B4ldyuD9EKQ/viewform";
         const prefillUrl = `${baseUrl}?usp=pp_url&${entryId}=${encodeURIComponent(enteredId)}`;
 
         iframe.src = prefillUrl;
-
-        // Disable input so it can't be changed after
         document.getElementById("bookingId").readOnly = true;
       }
     }
