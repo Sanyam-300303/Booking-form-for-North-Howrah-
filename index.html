@@ -1,139 +1,76 @@
 <!DOCTYPE html>
 <html lang="hi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>अष्टापद तीर्थ यात्रा - स्नेह प्रयास</title>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Roboto&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Baloo 2', cursive, 'Roboto', sans-serif;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/1/13/Adinath_Temple_Kundalpur_Bihar.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: #3e2723;
-      text-align: center;
-    }
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>अष्टापद तीर्थ यात्रा - स्नेह प्रयास</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Roboto&display=swap" rel="stylesheet"/>
+<style>
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Baloo 2', cursive, 'Roboto', sans-serif;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/1/13/Photo_of_lord_adinath_bhagwan_at_kundalpur.JPG') center center fixed;
+    background-size: cover;
+    color: #3e2723; text-align: center;
+  }
+  .overlay {
+    background-color: rgba(255,255,255,0.85);
+    max-width: 600px;
+    margin: 50px auto;
+    border-radius: 16px;
+    padding: 25px 30px;
+    box-shadow: 0 4px 15px rgba(163,81,45,0.25);
+  }
+  header {
+    font-size: 42px; color: #a52a2a;
+    margin-bottom: 10px; text-shadow: 1px 1px #fff0e0;
+  }
+  .greeting {
+    font-size: 22px; font-weight: 600;
+    color: #5d4037; margin-bottom: 20px;
+  }
+  h2 { color: #6a1b9a; margin-bottom: 15px; }
+  input[type="text"] {
+    padding: 10px; font-size: 18px;
+    width: 80%; border-radius: 8px;
+    border: 1px solid #ba68c8;
+    outline-color: #8e24aa; margin-top: 12px;
+  }
+  button {
+    margin-top: 15px; padding: 10px 24px;
+    font-size: 16px; background: #8e24aa;
+    color: white; border: none; border-radius: 8px;
+    cursor: pointer; transition: background-color 0.3s;
+  }
+  button:hover { background: #6a1b9a; }
+  #errorMsg { color: #c62828; font-weight: 600; margin-top: 10px; }
+  iframe {
+    width: 100%; height: 600px; border: none;
+    margin-top: 20px; border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(90,35,70,0.15);
+  }
+  .terms { margin-top: 20px; font-size: 14px; text-align: left; color: #5d4037; }
+  .terms input { margin-right: 8px; }
 
-    header {
-      font-size: 42px;
-      color: #a52a2a;
-      margin: 30px 10px 10px;
-      text-shadow: 1px 1px #fff0e0;
-    }
-
-    .greeting {
-      font-size: 22px;
-      font-weight: 600;
-      color: #5d4037;
-      margin-bottom: 20px;
-      text-shadow: 1px 1px 2px rgba(255,255,255,0.7);
-    }
-
-    .container {
-      background-color: rgba(255, 255, 255, 0.92);
-      padding: 25px 30px;
-      border-radius: 16px;
-      width: 90%;
-      max-width: 600px;
-      margin: 30px auto;
-      box-shadow: 0 4px 15px rgba(163, 81, 45, 0.25);
-    }
-
-    h2 {
-      color: #6a1b9a;
-      margin-bottom: 15px;
-    }
-
-    input[type="text"] {
-      padding: 10px;
-      font-size: 18px;
-      width: 80%;
-      border-radius: 8px;
-      border: 1px solid #ba68c8;
-      margin-top: 12px;
-      outline-color: #8e24aa;
-    }
-
-    button {
-      margin-top: 15px;
-      padding: 10px 24px;
-      font-size: 16px;
-      background-color: #8e24aa;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #6a1b9a;
-    }
-
-    #errorMsg {
-      color: #c62828;
-      margin-top: 10px;
-      font-weight: 600;
-    }
-
-    iframe {
-      width: 100%;
-      height: 600px;
-      border: none;
-      margin-top: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(90, 35, 70, 0.15);
-    }
-
-    .terms {
-      margin-top: 20px;
-      font-size: 14px;
-      color: #5d4037;
-      text-align: left;
-    }
-
-    .terms input {
-      margin-right: 8px;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        font-size: 28px;
-      }
-      .greeting {
-        font-size: 18px;
-      }
-      .container {
-        padding: 20px;
-      }
-      iframe {
-        height: 400px;
-      }
-    }
-  </style>
+  @media(max-width:768px){
+    header{font-size:28px;}
+    .greeting{font-size:18px;}
+    iframe{height:400px;}
+  }
+</style>
 </head>
 <body>
-
-  <header>अष्टापद तीर्थ यात्रा 2025</header>
-  <div class="greeting">आयोजक: <strong>स्नेह प्रयास</strong><br>आपका पावन स्वागत है 🙏</div>
-
-  <div class="container">
+  <div class="overlay">
+    <header>अष्टापद तीर्थ यात्रा 2025</header>
+    <div class="greeting">आयोजक: <strong>स्नेह प्रयास</strong><br>आपका स्वागत है 🙏</div>
     <h2>बुकिंग ID दर्ज करें</h2>
-    <input type="text" id="bookingId" placeholder="उदाहरण: ind153" />
-    <br />
+    <input type="text" id="bookingId" placeholder="उदाहरण: ind153"/><br/>
     <button onclick="checkBookingId()">प्रवेश करें</button>
     <p id="errorMsg"></p>
-
     <div id="formContainer" style="display:none;">
       <h3>पंजीकरण फ़ॉर्म</h3>
       <iframe src="" loading="lazy">Loading…</iframe>
-
       <div class="terms">
-        <input type="checkbox" id="termsCheckbox" required />
+        <input type="checkbox" id="termsCheckbox" required/>
         <label for="termsCheckbox">
-          हम प्रमाणित करते हैं कि दी गई सभी जानकारी सही और सत्य है।
+          हम सत्यापन करते हैं कि सभी जानकारी सही व पूर्ण है।
         </label>
       </div>
     </div>
@@ -141,43 +78,34 @@
 
   <script>
     const validBookingIds = [];
-
-    function addBookingRange(prefix, start, end) {
-      for (let i = start; i <= end; i++) {
-        validBookingIds.push(prefix.toLowerCase() + i);
-      }
+    function addBookingRange(prefix,start,end){
+      for(let i=start;i<=end;i++){ validBookingIds.push(prefix.toLowerCase()+i); }
     }
+    addBookingRange('ind',153,196);
+    addBookingRange('shwh',197,288);
+    addBookingRange('nhwh',289,315);
+    addBookingRange('bbz',316,340);
+    addBookingRange('bbk',341,362);
+    addBookingRange('ali',363,371);
+    addBookingRange('kan',372,394);
+    addBookingRange('chow',395,412);
+    addBookingRange('shy',413,434);
 
-    addBookingRange('ind', 153, 196);
-    addBookingRange('shwh', 197, 288);
-    addBookingRange('nhwh', 289, 315);
-    addBookingRange('bbz', 316, 340);
-    addBookingRange('bbk', 341, 362);
-    addBookingRange('ali', 363, 371);
-    addBookingRange('kan', 372, 394);
-    addBookingRange('chow', 395, 412);
-    addBookingRange('shy', 413, 434);
-
-    function checkBookingId() {
-      const enteredId = document.getElementById("bookingId").value.trim().toLowerCase();
-      const errorMsg = document.getElementById("errorMsg");
-      const formContainer = document.getElementById("formContainer");
-      const iframe = formContainer.querySelector("iframe");
-
-      if (!validBookingIds.includes(enteredId)) {
-        errorMsg.innerText = "❌ अमान्य बुकिंग ID। कृपया पुनः प्रयास करें।";
-        formContainer.style.display = "none";
+    function checkBookingId(){
+      const enteredId=document.getElementById("bookingId").value.trim().toLowerCase();
+      const errorMsg=document.getElementById("errorMsg");
+      const formContainer=document.getElementById("formContainer");
+      const iframe=formContainer.querySelector("iframe");
+      if(!validBookingIds.includes(enteredId)){
+        errorMsg.innerText="❌ अमान्य बुकिंग ID। कृपया पुनः प्रयास करें।";
+        formContainer.style.display="none";
       } else {
-        errorMsg.innerText = "";
-        formContainer.style.display = "block";
-
-        // Prefill Google Form
-        const entryId = "entry.1689621018";
-        const baseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeIP3xr1UbQwwa42Fk8kqS-zB1Ujx9rhDK5QU3B4ldyuD9EKQ/viewform";
-        const prefillUrl = `${baseUrl}?usp=pp_url&${entryId}=${encodeURIComponent(enteredId)}`;
-
-        iframe.src = prefillUrl;
-        document.getElementById("bookingId").readOnly = true;
+        errorMsg.innerText="";
+        formContainer.style.display="block";
+        const entryId="entry.1689621018";
+        const baseUrl="https://docs.google.com/forms/d/e/1FAIpQLSeIP3xr1UbQwwa42Fk8kqS-zB1Ujx9rhDK5QU3B4ldyuD9EKQ/viewform";
+        iframe.src=`${baseUrl}?usp=pp_url&${entryId}=${encodeURIComponent(enteredId)}`;
+        document.getElementById("bookingId").readOnly=true;
       }
     }
   </script>
