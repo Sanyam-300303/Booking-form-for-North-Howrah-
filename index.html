@@ -118,18 +118,8 @@
     }
 
     #formLinkContainer {
-      margin-top: 15px;
-      font-weight: 600;
-    }
-
-    #formLinkContainer a {
-      color: #ad1457;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    #formLinkContainer a:hover {
-      text-decoration: underline;
+      display: none;
+      margin-top: 10px;
     }
 
     @keyframes fadeInTop {
@@ -190,6 +180,12 @@
       <h3>Booking Form</h3>
       <iframe src="" loading="lazy"></iframe>
 
+      <p id="formLinkContainer">
+        <a href="#" id="formLink" target="_blank" rel="noopener noreferrer" style="color:#ad1457; font-weight:bold; text-decoration:underline;">
+          Click here to open the booking form
+        </a>
+      </p>
+
       <div class="terms">
         <input type="checkbox" id="termsCheckbox" required />
         <label for="termsCheckbox">
@@ -197,14 +193,6 @@
         </label>
       </div>
     </div>
-
-    <!-- Link container for mobile users -->
-    <p id="formLinkContainer" style="display:none;">
-      Can't see the form?  
-      <a href="" id="formLink" target="_blank" rel="noopener noreferrer">
-        Click here to open the form in a new tab
-      </a>
-    </p>
   </div>
 
   <script>
@@ -227,10 +215,6 @@
     addBookingRange('chow', 395, 412);
     addBookingRange('shy', 413, 434);
 
-    function isMobileDevice() {
-      return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
-    }
-
     function checkBookingId() {
       const enteredId = document.getElementById("bookingId").value.trim().toLowerCase();
       const errorMsg = document.getElementById("errorMsg");
@@ -243,41 +227,41 @@
         errorMsg.innerText = "❌ Invalid Booking ID. Please try again.";
         formContainer.style.display = "none";
         formLinkContainer.style.display = "none";
-        iframe.src = "";
-      } else {
-        errorMsg.innerText = "";
-        formContainer.style.display = "block";
+        return;
+      }
 
-        const entryId = "entry.1689621018";
-        const baseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeIP3xr1UbQwwa42Fk8kqS-zB1Ujx9rhDK5QU3B4ldyuD9EKQ/viewform?usp=header";
-        const prefillUrl = `${baseUrl}?usp=pp_url&${entryId}=${encodeURIComponent(enteredId)}`;
+      errorMsg.innerText = "";
+      formContainer.style.display = "block";
 
-        // Set the link URL & show it
+      const entryId = "entry.1689621018"; // Booking ID field
+      const baseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeIP3xr1UbQwwa42Fk8kqS-zB1Ujx9rhDK5QU3B4ldyuD9EKQ/viewform";
+      const prefillUrl = `${baseUrl}?usp=pp_url&${entryId}=${encodeURIComponent(enteredId)}`;
+
+      // On desktop: show iframe
+      iframe.src = prefillUrl;
+
+      // On mobile: show link instead
+      if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
         formLink.href = prefillUrl;
         formLinkContainer.style.display = "block";
-
-        if (isMobileDevice()) {
-          // On mobile: hide iframe, show only the link
-          iframe.style.display = "none";
-          iframe.src = "";
-        } else {
-          // On desktop: show iframe and load form
-          iframe.style.display = "block";
-          iframe.src = prefillUrl;
-        }
-
-        // Scroll smoothly to form or link
-        formContainer.scrollIntoView({ behavior: 'smooth' });
+        iframe.style.display = "none";
+      } else {
+        formLinkContainer.style.display = "none";
+        iframe.style.display = "block";
       }
+
+      // Auto-scroll to the form section
+      formContainer.scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Allow Enter key to submit form
-    document.getElementById('bookingId').addEventListener('keydown', function(event) {
-      if (event.key === 'Enter') {
-        event.preventDefault();
+    // Allow Enter key to submit
+    document.getElementById("bookingId").addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
         checkBookingId();
       }
     });
   </script>
+
 </body>
 </html>
