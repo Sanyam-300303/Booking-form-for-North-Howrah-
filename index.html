@@ -232,21 +232,21 @@
         errorMsg.innerText = "";
         formContainer.style.display = "block";
 
-        const entryId = "entry.1689621018"; // Replace with your actual form field ID
+        const entryId = "entry.1689621018"; // Correct Booking ID field from your form
         const baseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeIP3xr1UbQwwa42Fk8kqS-zB1Ujx9rhDK5QU3B4ldyuD9EKQ/viewform";
         const prefillUrl = `${baseUrl}?usp=pp_url&${entryId}=${encodeURIComponent(enteredId)}`;
 
         iframe.src = prefillUrl;
         backupLink.href = prefillUrl;
 
-        // Show fallback link on mobile
+        // Show fallback link on mobile devices
         if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
           mobileLink.style.display = "block";
         } else {
           mobileLink.style.display = "none";
         }
 
-        // Auto-scroll to form
+        // Auto-scroll smoothly to the form container
         formContainer.scrollIntoView({ behavior: 'smooth' });
       }
     }
