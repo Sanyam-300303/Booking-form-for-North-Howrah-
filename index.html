@@ -6,6 +6,7 @@
   <title>Booking Access</title>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Roboto&display=swap" rel="stylesheet" />
   <style>
+    /* ... your existing CSS here ... */
     body {
       margin: 0;
       padding: 0;
@@ -20,7 +21,6 @@
       text-align: center;
       color: #333;
     }
-
     header {
       font-size: 64px;
       font-weight: 600;
@@ -32,7 +32,6 @@
       margin: 20px 0 10px;
       padding: 0 15px;
     }
-
     .greeting {
       font-size: 32px;
       font-weight: 700;
@@ -44,7 +43,6 @@
       margin-bottom: 20px;
       padding: 0 15px;
     }
-
     .container {
       background-color: rgba(255, 240, 245, 0.9);
       padding: 20px 30px;
@@ -55,13 +53,11 @@
       box-shadow: 0 6px 15px rgba(255, 182, 193, 0.3);
       margin-bottom: 40px;
     }
-
     h2 {
       color: #ad1457;
       font-weight: 700;
       margin-bottom: 15px;
     }
-
     input[type="text"] {
       padding: 10px;
       font-size: 16px;
@@ -71,7 +67,6 @@
       border: 1px solid #f48fb1;
       outline-color: #f06292;
     }
-
     button {
       padding: 10px 24px;
       font-size: 16px;
@@ -82,18 +77,15 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
-
     button:hover {
       background-color: #ad1457;
     }
-
     #errorMsg {
       color: #d81b60;
       margin-top: 10px;
       font-weight: 600;
       min-height: 24px;
     }
-
     .terms {
       font-size: 14px;
       color: #880e4f;
@@ -102,12 +94,10 @@
       user-select: none;
       text-align: left;
     }
-
     .terms input[type="checkbox"] {
       margin-right: 10px;
       cursor: pointer;
     }
-
     iframe {
       width: 100%;
       height: 600px;
@@ -116,46 +106,37 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(240, 128, 152, 0.25);
     }
-
     #mobileLink {
       display: none;
       margin-top: 10px;
     }
-
     @keyframes fadeInTop {
       0% { opacity: 0; transform: translateY(-20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-
     @media (max-width: 768px) {
       header {
         font-size: 36px;
         margin-top: 20px;
       }
-
       .greeting {
         font-size: 20px;
         margin-bottom: 20px;
       }
-
       .container {
         padding: 15px 20px;
       }
-
       input[type="text"] {
         width: 100%;
         font-size: 14px;
       }
-
       button {
         font-size: 14px;
         padding: 8px 16px;
       }
-
       iframe {
         height: 400px;
       }
-
       .terms {
         font-size: 12px;
       }
@@ -216,8 +197,11 @@
     addBookingRange('chow', 395, 412);
     addBookingRange('shy', 413, 434);
 
+    const entryId = "entry.1689621018"; // Booking ID field
+
     function checkBookingId() {
-      const enteredId = document.getElementById("bookingId").value.trim().toLowerCase();
+      const input = document.getElementById("bookingId");
+      const enteredId = input.value.trim().toLowerCase();
       const errorMsg = document.getElementById("errorMsg");
       const formContainer = document.getElementById("formContainer");
       const iframe = formContainer.querySelector("iframe");
@@ -232,7 +216,6 @@
         errorMsg.innerText = "";
         formContainer.style.display = "block";
 
-        const entryId = "entry.1689621018"; // Correct Booking ID field from your form
         const baseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeIP3xr1UbQwwa42Fk8kqS-zB1Ujx9rhDK5QU3B4ldyuD9EKQ/viewform";
         const prefillUrl = `${baseUrl}?usp=pp_url&${entryId}=${encodeURIComponent(enteredId)}`;
 
@@ -250,6 +233,23 @@
         formContainer.scrollIntoView({ behavior: 'smooth' });
       }
     }
+
+    // Auto-check and load if input already has value on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const input = document.getElementById("bookingId");
+      if (input.value.trim() !== '') {
+        checkBookingId();
+      }
+    });
+
+    // Also allow pressing Enter key to submit form
+    document.getElementById('bookingId').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        checkBookingId();
+      }
+    });
   </script>
+
 </body>
 </html>
