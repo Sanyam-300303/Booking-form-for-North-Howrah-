@@ -232,19 +232,22 @@
         errorMsg.innerText = "";
         formContainer.style.display = "block";
 
-        const entryId = "entry.1689621018";  // Replace with your actual field ID
+        const entryId = "entry.1689621018"; // Replace with your actual form field ID
         const baseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeIP3xr1UbQwwa42Fk8kqS-zB1Ujx9rhDK5QU3B4ldyuD9EKQ/viewform";
         const prefillUrl = `${baseUrl}?usp=pp_url&${entryId}=${encodeURIComponent(enteredId)}`;
 
         iframe.src = prefillUrl;
         backupLink.href = prefillUrl;
 
-        // Show backup link for mobile users
+        // Show fallback link on mobile
         if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
           mobileLink.style.display = "block";
         } else {
           mobileLink.style.display = "none";
         }
+
+        // Auto-scroll to form
+        formContainer.scrollIntoView({ behavior: 'smooth' });
       }
     }
   </script>
